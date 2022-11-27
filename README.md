@@ -1,5 +1,6 @@
 # ⚡ Projeto semestral  - Linguagem de programação
 Projeto para praticar malloc, alloc, realloc, estruturas, headers e escrita em arquivos utilizando a linguagem de programação C.
+<br>
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/The_C_Programming_Language_logo.svg" width="100" alt="Logotipo da linguagem C"/>
 
 ## 🪒 Resumo dos tópicos
@@ -32,7 +33,7 @@ Todo o planejamento do projeto foi realizado através da ferramenta Trello. Util
 
 Para trabalhar de forma unida e compartilhada, utilizamos da ferramenta Replit, um editor de código que suporta diversas linguagens, incluindo a C.
 
-<img src="https://replit.com/public/images/ogBanner.png" alt="Replit"/>
+<img src="https://raw.githubusercontent.com/manzolimatheus/projeto-lpl/main/public/img/Trello.jpg"/>
 
 ## 💼 Organização do projeto
 
@@ -42,7 +43,7 @@ A estrutura de arquivos que utilizamos foi a MVC (Movel-View-Controller), adapta
 ### 🤖 Testes automatizados
 Para garantir o funcionamento adequado da aplicação, utilizamos de testes automatizados através de funções de asserção personalizadas, criadas pelo time.
 
-<img src="https://replit.com/@manzolimatheus/projeto-lpl#public/img/Testes.jpg" alt="Testes automatizados">
+<img src="https://raw.githubusercontent.com/manzolimatheus/projeto-lpl/main/public/img/Testes.jpg">
 
 ### 🆘 Helpers
 Dentro do projeto existem também helpers, contendo funções auxiliares para o projeto, como funções para exibir uma linha na tela.
