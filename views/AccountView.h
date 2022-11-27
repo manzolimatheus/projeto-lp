@@ -1,9 +1,13 @@
 #include "../controllers/AccountController.h"
 
-void saveRecord();
+// Função para receber os dados de uma conta para criar seu registro
+void AccountView_saveRecord();
 
-void searchAccount();
+// Função para receber o id da conta a ser pesquisada
+void AccountView_searchAccount();
 
-void depositValue();
+// Função para depositar determinado valor em uma conta com base em seu id
+void AccountView_depositValue();
 
-void withdrawValue();
+// Função para retirar determinado valor de uma conta com base em seu id
+void AccountView_withdrawValue();

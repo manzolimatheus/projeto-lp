@@ -7,9 +7,13 @@
 */
 void AccountController_runTests();
 
-void test_search_account_should_return_not_found();
+void test_search_account_by_id_should_return_not_found();
 
-void test_search_account_should_return_found();
+void test_search_account_by_id_should_return_found();
+
+void test_search_account_by_name_should_return_not_found();
+
+void test_search_account_by_name_should_return_found();
 
 void test_if_balance_is_being_deposited();
 

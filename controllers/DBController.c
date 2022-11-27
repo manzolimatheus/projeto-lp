@@ -60,7 +60,23 @@ Account DBController_findRecord(int id) {
   return acc;
 }
 
-Response DBController_writeToDB(AccountArray *accounts) {
+Account DBController_findRecordByName(char * query) {
+  AccountArray array = DBController_getRecords();
+  Account acc;
+  acc.id = 0;
+
+  for (int i = 1; i < array.size + 1; i++) {
+    if (strstr(array.data[i].name, query) != NULL && !array.data[i].isDeleted) {
+      acc = array.data[i];
+      return acc;
+    }
+  }
+
+  return acc;
+}
+
+Response DBController_writeToDB(AccountArray *accounts, char *http_method,
+                                int id) {
 
   // printf("\nContas recebidas:\n");
   // for (int i = 1; i < accounts->size + 1; i++) {
@@ -81,7 +97,7 @@ Response DBController_writeToDB(AccountArray *accounts) {
     return res;
   }
 
-  fprintf(fp, "id, nome, isSpecial, balance, isDeleted");
+  fprintf(fp, "id, name, isSpecial, balance, isDeleted");
 
   for (int i = 1; i < accounts->size + 1; i++) {
     fprintf(fp, "\n%i,%s,%i,%.2lf,%i", accounts->data[i].id,
@@ -93,6 +109,10 @@ Response DBController_writeToDB(AccountArray *accounts) {
 
   asprintf(&res.message, "Salvo com sucesso!");
   res.status = 1;
+  // char *command;
+
+  // asprintf(command, "python3.8 main.py %s %i", http_method, id);
+  // system(command);
 
   return res;
 }

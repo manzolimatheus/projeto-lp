@@ -1,16 +1,13 @@
 #include "./AccountView.h"
 
-void saveRecord() {
+void AccountView_saveRecord() {
   Account acc;
-
   printf("\nNome da conta: >");
-  scanf("%s", acc.name);
-  fflush(stdin);
+  scanf(" ");
+  fgets(acc.name, 30, stdin);
+  acc.name[strcspn(acc.name, "\n")] = 0;
   printf("\nEh um cliente especial? [1/0] >");
   scanf("%i", &acc.isSpecial);
-  fflush(stdin);
-  printf("\nSaldo da conta: >");
-  scanf("%lf", &acc.balance);
   fflush(stdin);
 
   Response res = AccountController_saveRecord(acc);
@@ -18,18 +15,44 @@ void saveRecord() {
   printf("\n%s", res.message);
 }
 
-void searchAccount() {
-  int id;
-  printf("\nDigite o id da conta: >");
-  scanf("%i", &id);
-  fflush(stdin);
+void AccountView_searchAccount() {
 
-  Response res = AccountController_search(id);
+  int choice;
+  line();
+  printf("\nBUSCA DE CONTA");
+  printf("\nEscolha sua opção:");
+  printf("\n[1]. Buscar por Id");
+  printf("\n[2]. Buscar por nome");
+  printf("\n[3]. Cancelar busca\n>");
+  scanf("%i", &choice);
+
+  int id = 0;
+  char query[20];
+
+  switch(choice) {
+    case 1:
+      printf("\nDigite o id da conta: >");
+      scanf("%i", &id);
+      fflush(stdin);
+      break;
+    case 2:
+      printf("\nDigite o nome da conta: >");
+      scanf(" ");
+      fgets(query, 30, stdin);
+      query[strcspn(query, "\n")] = 0;
+      fflush(stdin);
+      break;
+    default:
+      printf("\nOpcao invalida! Cancelando...");
+    break;
+  }
+
+  Response res = AccountController_search(id, query);
 
   printf("\n%s", res.message);
 }
 
-void depositValue() {
+void AccountView_depositValue() {
   int id;
   double saldo;
 
@@ -43,7 +66,7 @@ void depositValue() {
   printf("\n%s", res.message);
 }
 
-void withdrawValue() {
+void AccountView_withdrawValue() {
   int id;
   double saldo;
 

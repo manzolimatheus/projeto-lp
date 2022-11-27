@@ -2,24 +2,38 @@
 #include "../../helpers/utils.h"
 
 void AccountController_runTests() {
-  test_search_account_should_return_not_found();
-  test_search_account_should_return_found();
+  test_search_account_by_id_should_return_not_found();
+  test_search_account_by_id_should_return_found();
+  test_search_account_by_name_should_return_not_found();
+  test_search_account_by_name_should_return_found();
   test_if_balance_is_being_deposited();
   test_if_balance_is_not_being_deposited();
   test_if_withdraw_was_made();
   test_if_withdraw_was_not_made();
 }
 
-void test_search_account_should_return_not_found() {
-  Response res = AccountController_search(0);
+void test_search_account_by_id_should_return_not_found() {
+  Response res = AccountController_search(0, "");
 
-  assertTest("Pesquisa deve retornar nao encontrado", !res.status);
+  assertTest("Pesquisa por id deve retornar nao encontrado", !res.status);
 }
 
-void test_search_account_should_return_found() {
-  Response res = AccountController_search(1);
+void test_search_account_by_id_should_return_found() {
+  Response res = AccountController_search(1, "");
 
-  assertTest("Pesquisa deve retornar encontrado", res.status);
+  assertTest("Pesquisa por id deve retornar encontrado", res.status);
+}
+
+void test_search_account_by_name_should_return_not_found() {
+  Response res = AccountController_search(0, "-");
+
+  assertTest("Pesquisa por nome deve retornar nao encontrado", !res.status);
+}
+
+void test_search_account_by_name_should_return_found() {
+  Response res = AccountController_search(0, "matheus");
+
+  assertTest("Pesquisa por nome deve retornar encontrado", res.status);
 }
 
 void test_if_balance_is_being_deposited() {

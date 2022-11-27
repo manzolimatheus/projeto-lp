@@ -1,3 +1,1 @@
-id, nome, isSpecial, balance, isDeleted
-1,Matheus,1,3500.00,0
-2,pedro,1,3749.05,0
+id, name, isSpecial, balance, isDeleted

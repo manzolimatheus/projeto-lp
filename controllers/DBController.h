@@ -13,6 +13,9 @@ AccountArray DBController_getRecords();
 */
 Account DBController_findRecord(int id);
 
+// Função para buscar uma conta no banco com base no nome fornecido
+Account DBController_findRecordByName(char * query);
+
 /*
   Função para salvar no banco dados
   A função espera receber um objeto lista de contas
@@ -20,4 +23,5 @@ Account DBController_findRecord(int id);
   registros e então inserir, alterar ou excluir Em seguida, é só passar o
   AccountArray modificado para a função registrar no arquivo
 */
-Response DBController_writeToDB(AccountArray *accounts);
+Response DBController_writeToDB(AccountArray *accounts, char *http_method,
+                                int id);
