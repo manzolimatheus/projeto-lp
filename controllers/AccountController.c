@@ -1,11 +1,15 @@
 #include "./AccountController.h"
 #include <string.h>
 
-Response AccountController_search(int id) {
+Response AccountController_search(int id, char *query) {
+  Account account;
+  account.id = 0;
 
-  Account account = DBController_findRecord(id);
-  // printf("\nId: %i, Nome: %s, Eh Especial? %s, Saldo: %.2lf\n", account.id,
-  //        account.name, account.isSpecial ? "Sim" : "Nao", account.balance);
+  if ((int)strlen(query) > 0) {
+    account = DBController_findRecordByName(query);
+  } else {
+    account = DBController_findRecord(id);
+  }
 
   Response res;
 

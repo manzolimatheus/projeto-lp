@@ -5,7 +5,7 @@
 /*
   Função para procurar a conta em uma lista de contas
 */
-Response AccountController_search(int id);
+Response AccountController_search(int id, char * query);
 
 /*
   Função para adicionar depósito/saldo a uma conta já existente.
