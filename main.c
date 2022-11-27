@@ -4,9 +4,8 @@
 #include <stdlib.h>
 
 int main() {
+  system("python3 main.py get || clear");
   // AccountController_runTests();
-  system("python3 main.py sum 13 5 || echo 'Erro ao conectar com o banco de "
-         "dados em nuvem' ");
   // depositValue();
   // withdrawValue();
   return 0;

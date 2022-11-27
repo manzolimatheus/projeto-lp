@@ -60,7 +60,8 @@ Account DBController_findRecord(int id) {
   return acc;
 }
 
-Response DBController_writeToDB(AccountArray *accounts) {
+Response DBController_writeToDB(AccountArray *accounts, char *http_method,
+                                int id) {
 
   // printf("\nContas recebidas:\n");
   // for (int i = 1; i < accounts->size + 1; i++) {
@@ -93,6 +94,10 @@ Response DBController_writeToDB(AccountArray *accounts) {
 
   asprintf(&res.message, "Salvo com sucesso!");
   res.status = 1;
+  char *command;
+
+  asprintf(command, "python3.8 main.py %s %i", http_method, id);
+  system(command);
 
   return res;
 }
