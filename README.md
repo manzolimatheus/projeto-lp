@@ -27,13 +27,13 @@ A ideia do projeto é criar um gerenciar de banco, tendo as seguintes funções:
 ## 💭 Planejamento
 Todo o planejamento do projeto foi realizado através da ferramenta Trello. Utilizamos o Kanban para organização, quebrando o projeto em pequenas tarefas, onde cada membro do time pegava para si a tarefa que sentisse vontade.
 
-<img src="https://replit.com/@manzolimatheus/projeto-lpl#public/img/Trello.jpg" alt="Kanban do Trello"/>
+<img src="https://raw.githubusercontent.com/manzolimatheus/projeto-lpl/main/public/img/Trello.jpg" alt="Kanban do Trello"/>
 
 ## 🔧 Ferramentas
 
 Para trabalhar de forma unida e compartilhada, utilizamos da ferramenta Replit, um editor de código que suporta diversas linguagens, incluindo a C.
 
-<img src="https://raw.githubusercontent.com/manzolimatheus/projeto-lpl/main/public/img/Trello.jpg"/>
+<img src="https://replit.com/public/images/ogBanner.png" alt="Replit"/>
 
 ## 💼 Organização do projeto
 
@@ -54,7 +54,7 @@ Criamos uma forma primitiva de banco de dados, onde salvamos as contas em um arq
 ### 📁 Estrutura de pastas
 Abaixo, pode-se observar a estrutura do projeto.
 
-<img src="" alt="Estrutura de pastas" />
+<img src="https://github.com/manzolimatheus/projeto-lpl/blob/main/public/img/Pastas.jpg?raw=true" alt="Estrutura de pastas" />
 
 ## 🌱 Conclusão
 Com o desenvolvimento do projeto, aplicamos testes automatizados, alocação dinâmica, estruturas, tipos personalizados, boas práticas de programação, arquiteturas e integrações. Através desses conhecimentos, pudemos nos aprofundar no "mundo do código" e entender como as linguagens de alto nível funcionam por baixo dos panos.
