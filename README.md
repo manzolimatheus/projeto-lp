@@ -54,7 +54,7 @@ Criamos uma forma primitiva de banco de dados, onde salvamos as contas em um arq
 ### 📁 Estrutura de pastas
 Abaixo, pode-se observar a estrutura do projeto.
 
-<img src="" alt="Estrutura de pastas" />
+<img src="https://github.com/manzolimatheus/projeto-lpl/blob/main/public/img/Pastas.jpg?raw=true" alt="Estrutura de pastas" />
 
 ## 🌱 Conclusão
 Com o desenvolvimento do projeto, aplicamos testes automatizados, alocação dinâmica, estruturas, tipos personalizados, boas práticas de programação, arquiteturas e integrações. Através desses conhecimentos, pudemos nos aprofundar no "mundo do código" e entender como as linguagens de alto nível funcionam por baixo dos panos.
