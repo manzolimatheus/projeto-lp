@@ -62,6 +62,13 @@ Por fim, como local de hospedagem dessa API, utilizamos nossa própria VPS na Or
 
 <center><img src="https://github.com/manzolimatheus/projeto-lp/blob/main/public/img/logo%20strapi.jpg?raw=true" alt="Logo do Strapi" width="600"></center>
 
+## 🛒 Tem interesse em comprar nosso software?
+<br>
+Clique no link abaixo e visite nosso e-commerce!
+<br>
+<a href="https://manzolimatheus.github.io/projeto-lp-site/">
+<img src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/8acbeec7-ece8-4e66-9ac5-d1a10a4369ba/test1-clientside/BUTTON/New%20Button/OrderNow.gif" alt="Compre ja" width="200">
+</a>
 
 ## 🌱 Conclusão
 Com o desenvolvimento do projeto, aplicamos testes automatizados, alocação dinâmica, estruturas, tipos personalizados, boas práticas de programação, arquiteturas e integrações. Através desses conhecimentos, pudemos nos aprofundar no "mundo do código" e entender como as linguagens de alto nível funcionam por baixo dos panos.
