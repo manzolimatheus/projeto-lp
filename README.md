@@ -60,7 +60,7 @@ Abaixo, pode-se observar a estrutura do projeto.
 Como Cloud, utilizamos uma API open-source chamada Strapi, onde apenas são modeladas as "tabelas" do projeto, de forma que todas as requisições - sejam elas POST, GET, PUT ou DELETE - já ficam com suas rotas prontas para uso, facilitando assim o desenvolvimento. Além disso, para que essas requisições fossem feitas, utilizamos um script em Python que lê os dados do arquivo .csv e os envia para dentro da API que salva esses dados no banco.
 Por fim, como local de hospedagem dessa API, utilizamos nossa própria VPS na Oracle Cloud.
 
-<img src="https://github.com/manzolimatheus/projeto-lp/blob/main/public/img/logo%20strapi.jpg?raw=true" alt="Logo do Strapi">
+<center><img src="https://github.com/manzolimatheus/projeto-lp/blob/main/public/img/logo%20strapi.jpg?raw=true" alt="Logo do Strapi" width="600"></center>
 
 
 ## 🌱 Conclusão
