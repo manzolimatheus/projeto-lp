@@ -2,28 +2,34 @@
 
 void menu() {
   int opcao = 0;
+  int selectedOption;
+
   do {
     // system("cls");
     line();
-    printf("\nBanco Fatec \n");
+    printf("\n");
+    system("toilet -f smblock BANK AGENT --filter border:metal");
     line();
-    printf("1. Cadastrar Conta\n");
-    printf("2. Atualizar Conta\n");
-    printf("3. Procurar Conta\n");
-    printf("4. Deposito em Conta\n");
-    printf("5. Saque em Conta\n");
-    printf("6. Listar Contas\n");
-    printf("7. Saldo Total de Contas \n");
-    printf("8. Sair \n");
-    printf("Digite sua opcao:  \n");
-    scanf("%d", &opcao);
 
-    switch (opcao) {
+    char *options[] = {"Cadastrar Conta",
+                       "Atualizar Conta",
+                       "Procurar Conta",
+                       "Deposito em Conta",
+                       "Saque em Conta",
+                       "Listar Contas",
+                       "Saldo Geral",
+                       "Desabilitar/Habilitar Conta",
+                       "Exibir registros excluidos",
+                       "Creditos",
+                       "Sair"};
+
+    int selectedOption = outputMenu(options, 11);
+    switch (selectedOption) {
     case 1:
       AccountView_saveRecord();
       break;
     case 2:
-      printf("\nWork in progress...");
+      AccountView_modifyAccount();
       break;
     case 3:
       AccountView_searchAccount();
@@ -35,17 +41,31 @@ void menu() {
       AccountView_withdrawValue();
       break;
     case 6:
-      printf("\nWork in progress...");
+      AccountView_showRecords();
       break;
     case 7:
-      printf("\nWork in progress...");
+      AccountView_overallBalance();
       break;
     case 8:
-      printf("Fim do programa \n");
+      AccountView_modifyStatusAccount();
       break;
-    default:
-      printf("\nOpcao invalida!");
+    case 9:
+      AccountView_showTrashCan();
+      break;
+    case 10:
+      MenuView_showCredits();
+      break;
+    case 11:
+      printf("Fim do programa \n");
+      exit(1);
       break;
     }
-  } while (opcao != 8);
+  } while (opcao != 11);
+}
+
+void MenuView_showCredits() {
+  clearScreen(1);
+  system("cowsay 'Feito com <3 por: Guilherme Ronha, Matheus Biazotto, Matheus "
+         "Manzoli, Raíne Felix, Tiago Sorato - @2022'");
+  Utils_pause();
 }

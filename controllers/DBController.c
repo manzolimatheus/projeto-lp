@@ -110,9 +110,8 @@ Response DBController_writeToDB(AccountArray *accounts, char *http_method,
   asprintf(&res.message, "Salvo com sucesso!");
   res.status = 1;
 
-  char command[100];
-
-  asprintf(command, "python3.8 main.py %s %i", http_method, id);
+  char *command;
+  asprintf(&command, "python3 main.py %s %i", http_method, id);
   system(command);
 
   return res;

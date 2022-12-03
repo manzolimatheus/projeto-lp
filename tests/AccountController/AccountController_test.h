@@ -22,3 +22,9 @@ void test_if_balance_is_not_being_deposited();
 void test_if_withdraw_was_made();
 
 void test_if_withdraw_was_not_made();
+
+void test_create_account_should_create();
+
+void test_get_overall_balance_should_return_balance();
+
+void test_modify_account_status_should_return_error();
