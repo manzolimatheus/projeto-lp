@@ -60,7 +60,7 @@ Account DBController_findRecord(int id) {
   return acc;
 }
 
-Account DBController_findRecordByName(char * query) {
+Account DBController_findRecordByName(char *query) {
   AccountArray array = DBController_getRecords();
   Account acc;
   acc.id = 0;
@@ -109,10 +109,10 @@ Response DBController_writeToDB(AccountArray *accounts, char *http_method,
 
   asprintf(&res.message, "Salvo com sucesso!");
   res.status = 1;
-  // char *command;
 
-  // asprintf(command, "python3.8 main.py %s %i", http_method, id);
-  // system(command);
+  char *command;
+  asprintf(&command, "python3 main.py %s %i", http_method, id);
+  system(command);
 
   return res;
 }

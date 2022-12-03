@@ -60,8 +60,7 @@ Response AccountController_withdraw(float saldo, int id) {
 
   for (int i = 1; i < accounts.size + 1; i++) {
     if (accounts.data[i].id == id && !accounts.data[i].isDeleted) {
-      if (accounts.data[i].balance - saldo == 0 ||
-          accounts.data[i].balance - saldo > 0 && saldo > 0) {
+      if (accounts.data[i].balance - saldo >= 0 && saldo > 0) {
         accounts.data[i].balance = accounts.data[i].balance - saldo;
 
         Response res =
@@ -79,13 +78,115 @@ Response AccountController_withdraw(float saldo, int id) {
   }
   res.status = 0;
   asprintf(&res.message, "Erro ao sacar: Conta nao encontrada ou desativada.");
+  return res;
+}
+
+Response AccountController_overallBalance() {
+  Response res;
+  AccountArray accounts = DBController_getRecords();
+  float overallBalance = 0;
+
+  for (int i = 1; i < accounts.size + 1; i++) {
+    if (!accounts.data[i].isDeleted) {
+      overallBalance = overallBalance + accounts.data[i].balance;
+    }
+  }
+
+  asprintf(&res.message, "O saldo geral é de: R$ %.2lf", overallBalance);
+  res.status = 1;
+
+  return res;
+}
+
+Response AccountController_modifyAccountStatus(int id, int op) {
+  Response res;
+  AccountArray accounts = DBController_getRecords();
+
+  for (int i = 1; i < accounts.size + 1; i++) {
+    if (accounts.data[i].id == id) {
+
+      if (op == 1) {
+        if (accounts.data[i].isDeleted == 0 && accounts.data[i].balance == 0) {
+          accounts.data[i].isDeleted = 1;
+
+          Response res = DBController_writeToDB(&accounts, "put", id);
+          asprintf(&res.message, "Conta desabilitada com sucesso.");
+
+          res.status = 1;
+
+          return res;
+        } else if (accounts.data[i].isDeleted == 0 &&
+                   accounts.data[i].balance > 0) {
+          asprintf(&res.message, "Erro ao atualizar: saque todo o saldo da "
+                                 "conta antes de desabilita-la.");
+          res.status = 1;
+          return res;
+        }
+
+        asprintf(
+
+            &res.message,
+
+            "Erro ao atualizar: a conta selecionada ja esta desabilitada.");
+
+        res.status = 0;
+
+        return res;
+      }
+
+      if (accounts.data[i].isDeleted == 1) {
+
+        accounts.data[i].isDeleted = 0;
+
+        Response res = DBController_writeToDB(&accounts, "put", id);
+        asprintf(&res.message, "Conta habilitada com sucesso!");
+
+        res.status = 1;
+
+        return res;
+      }
+      asprintf(&res.message,
+
+               "Erro ao atualizar: a conta selecionada ja esta habilitada.");
+
+      res.status = 0;
+
+      return res;
+    }
+  }
+  asprintf(&res.message, "Erro ao atualizar: conta nao encontrada.");
+  res.status = 0;
+}
+
+Response AccountController_modifyAccount(int id, char *name) {
+
+  Response res;
+  AccountArray accounts = DBController_getRecords();
+
+  for (int i = 1; i < accounts.size + 1; i++) {
+    if (accounts.data[i].id == id && accounts.data[i].isDeleted == 0) {
+      strcpy(accounts.data[i].name, name);
+
+      Response res = DBController_writeToDB(&accounts, "put", id);
+      asprintf(&res.message, "Conta alterada com sucesso!");
+      res.status = 1;
+      return res;
+    } else if (accounts.data[i].id == id && accounts.data[i].isDeleted == 1) {
+      asprintf(&res.message, "Erro ao alterar: conta desabilitada.");
+      res.status = 1;
+      return res;
+    }
+  }
+
+  asprintf(&res.message, "Erro ao alterar: conta nao encontrada.");
+  res.status = 0;
+  return res;
 }
 
 Response AccountController_saveRecord(Account acc) {
 
   AccountArray accs = DBController_getRecords();
-
-  accs.data = realloc(accs.data, (accs.size + 1) * sizeof(Account));
+  accs.data = (Account *)realloc(accs.data, (accs.size + 2) * sizeof(Account));
 
   acc.id = accs.size + 1;
   acc.isDeleted = 0;
@@ -96,4 +197,40 @@ Response AccountController_saveRecord(Account acc) {
   Response res = DBController_writeToDB(&accs, "post", acc.id);
 
   return res;
+}
+
+AccountArray AccountController_getAllRecords() {
+  AccountArray accounts = DBController_getRecords();
+  AccountArray enabledAccounts;
+  enabledAccounts.size = 0;
+  enabledAccounts.data = malloc(sizeof(Account));
+
+  for (int i = 1; i < accounts.size + 1; i++) {
+    if (!accounts.data[i].isDeleted) {
+      enabledAccounts.size++;
+      enabledAccounts.data = realloc(
+          enabledAccounts.data, (enabledAccounts.size + 1) * sizeof(Account));
+      enabledAccounts.data[enabledAccounts.size - 1] = accounts.data[i];
+    }
+  }
+
+  return enabledAccounts;
+}
+
+AccountArray AccountController_getDeletedRecords() {
+  AccountArray accounts = DBController_getRecords();
+  AccountArray deletedRecords;
+  deletedRecords.size = 0;
+  deletedRecords.data = malloc(sizeof(Account));
+
+  for (int i = 1; i < accounts.size + 1; i++) {
+    if (accounts.data[i].isDeleted) {
+      deletedRecords.size++;
+      deletedRecords.data = realloc(
+          deletedRecords.data, (deletedRecords.size + 1) * sizeof(Account));
+      deletedRecords.data[deletedRecords.size - 1] = accounts.data[i];
+    }
+  }
+
+  return deletedRecords;
 }
